@@ -5,7 +5,7 @@
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
-        "test": "jest"
+        "test": "jest  --forceExit"
     },
     "dependencies": {
         "body-parser": "^1.20.2",
