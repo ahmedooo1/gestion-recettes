@@ -59,13 +59,32 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/gestion-recettes-node:latest
 
 
-  deploy:
-    needs: build-and-push
-    runs-on: ubuntu-latest
+ deploy:
+  needs: build-and-push
+  runs-on: ubuntu-latest
 
-    steps:
-      - name: Déployer via Docker Compose
-        run: |
-          docker compose down
-          docker compose pull
-          docker compose up --build -d
+  steps:
+    - name: Installer Docker Compose
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker-compose
+
+    - name: Récupérer le code
+      uses: actions/checkout@v3
+
+    - name: Vérifier le fichier docker-compose.yml
+      run: |
+        ls -l  # Liste les fichiers dans le répertoire courant
+        if [ ! -f docker-compose.yml ]; then
+          echo "Fichier docker-compose.yml introuvable dans le répertoire courant."
+          exit 1
+        fi
+
+    - name: Se connecter à Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Déployer via Docker Compose
+      run: |
+        docker-compose down
+        docker-compose pull
+        docker-compose up -d
