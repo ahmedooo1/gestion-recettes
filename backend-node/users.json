@@ -15,5 +15,9 @@
   {
     "username": "toto",
     "password": "toto"
+  },
+  {
+    "username": "exemple",
+    "password": "exemple123"
   }
 ]

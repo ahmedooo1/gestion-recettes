@@ -1,24 +1,23 @@
 version: "3.8"
 services:
   php-api:
-    build: ./backend-php
+    build: ./backend-php  
     container_name: php-service
     ports:
-      - "8080:80"
-    env_file:
-      - .env
+    - "8080:80"
     depends_on:
-      - db
+    - db
+    env_file:
+    - .env
+    volumes:
+      - ./backend-php/cors.conf:/etc/apache2/conf-available/cors.conf
+
 
   node-auth:
     build: ./backend-node
     container_name: node-service
     ports:
-      - "${PORT}:3000"
-    environment:
-      JWT_SECRET: ${JWT_SECRET}
-    env_file:
-      - .env
+      - "3000:3000"
     volumes:
       - ./backend-node/users.json:/app/users.json
 
@@ -27,14 +26,22 @@ services:
     container_name: mysql-db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: recettes
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
     ports:
-      - "3306:3306"
+      - "3306:3306"  
     volumes:
       - db_data:/var/lib/mysql
+  frontend:
+    build: ./frontend
+    container_name: frontend-service
+    ports:
+      - "8081:80"
+    depends_on:
+      - php-api
+      - node-auth
 
 volumes:
   db_data:

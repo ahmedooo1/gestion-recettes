@@ -1,1 +1,42 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
+# Logs
+logs/
+*.log
+debug.log
+
+# Docker
+*.pid
+.env
+docker-compose.override.yml
+
+# MySQL Data Volume
+db_data/
+
+# PHP
+*.lock
+composer.phar
+
+# MacOS
+.DS_Store
+
+# Editor Directories and Files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Ignore build files
+build/
+dist/
+
+# Ignore temporary files
+*.tmp
+*.temp
+.env
+# Ignore all secrets
+secrets/
