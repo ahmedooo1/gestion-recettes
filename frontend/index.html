@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentification & Recettes</title>
+    <style>
+        /* 🌟 Styles Généraux */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        /* 🌟 Formulaires */
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: calc(100% - 20px);
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* 🌟 Recettes */
+        #recettes {
+            list-style: none;
+            padding: 0;
+        }
+
+        #recettes li {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* ✅ Responsive */
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue 👨‍🍳</h1>
+
+        <div id="auth-section">
+            <h2>Inscription</h2>
+            <input type="text" id="register-username" placeholder="Nom d'utilisateur">
+            <input type="password" id="register-password" placeholder="Mot de passe">
+            <button id="register-btn">S'inscrire</button>
+
+            <h2>Connexion</h2>
+            <input type="text" id="login-username" placeholder="Nom d'utilisateur">
+            <input type="password" id="login-password" placeholder="Mot de passe">
+            <button id="login-btn">Se connecter</button>
+        </div>
+
+        <div id="recettes-section" style="display: none;">
+            <h2>Liste des Recettes 🍕</h2>
+            <ul id="recettes"></ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
