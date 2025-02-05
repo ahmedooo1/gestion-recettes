@@ -4,7 +4,8 @@
     "description": "API Node.js pour la gestion des utilisateurs",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js"
+        "start": "node server.js", 
+        "test": "jest"
     },
     "dependencies": {
         "body-parser": "^1.20.2",
