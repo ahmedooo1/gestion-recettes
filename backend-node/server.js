@@ -15,6 +15,9 @@ let users = [];
 if (fs.existsSync("users.json")) {
     users = JSON.parse(fs.readFileSync("users.json"));
 }
+app.get("/ping", (req, res) => {
+res.status(200).json({ message: "pong" });
+});
 
 // Inscription
 app.post("/register", (req, res) => {
@@ -48,3 +51,6 @@ app.post("/login", (req, res) => {
 
 // Démarrer le serveur
 app.listen(3000, () => console.log("Serveur Node.js en écoute sur le port 3000"));
+
+
+module.exports = app;
