@@ -58,11 +58,6 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/gestion-recettes-node:latest
 
-          
-      - name: Créer le fichier .env
-        run: echo "${{ secrets.ENV_FILE }}" > .env
-
-
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
